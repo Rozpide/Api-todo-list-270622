@@ -12,7 +12,7 @@ const createUser = () => {
 
     fetch(url, options)
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(data => console.log(data))
     .catch(err => console.error('error:' + err));}
 
 const updateUser = () => {    

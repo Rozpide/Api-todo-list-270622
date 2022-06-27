@@ -1,24 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import TareasPendientes from "./TareasPendientes.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [tareas, cambiarTareas] = useState([]);
+	const agregarTarea = (nombreTarea) => {
+		const auxTarea = [...tareas, nombreTarea];
+		cambiarTareas(auxTarea);
+	};
+
+	const eliminarTarea = (index) => {
+		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
+			if (index !== auxIndex) return nombreTarea;
+		});
+		cambiarTareas(auxTarea);
+	};
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="fondo">
+			<h1>
+				<b>
+					<i>LISTA DE TAREAS</i>
+				</b>
+			</h1>
+			<div class="hojaPrincipal">
+				<TareasPendientes agregarTarea={agregarTarea} />
+
+				{tareas.map((nombreTarea, index) => {
+					return (
+						<div key={index}>
+							<h4 id="hoja1">
+								{index + 1}.- {nombreTarea}
+								<button
+									className="btn"
+									onClick={() =>
+										eliminarTarea(index)
+									}></button>
+							</h4>
+						</div>
+					);
+				})}
+			</div>
+
+			<div className="hoja2">
+				<legend>
+					<h6>tareas pendientes</h6>
+				</legend>
+			</div>
+			<div className="hoja3"></div>
 		</div>
 	);
 };

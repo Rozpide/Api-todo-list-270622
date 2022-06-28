@@ -1,64 +1,52 @@
-let express = require('express');
-let mongoose = require('mongoose');
-let app= express();
-app.configure( function(){
-  app.use(express.bodyParset());
-  app.use(express.methodOverride());
-  app.use(app.route);
-})
-app.get("/",function(req, res){
-  res.send("hola mundo");
-})
-app.listen(5000);
-console.log("servidor express ecuchando en el puerto 5000")
-// const createUser = () => {
-//     const fetch = require('node-fetch');
 
-//     let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
+const createUser = () => {
+    const fetch = require('node-fetch');
 
-//     let options = {
-//     method: 'GET',
-//     headers: {'Content-Type': 'application/json'}
-//     // body: JSON.stringify([{label:"" , done: ""}]),
-//     };
+    let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
 
-//     fetch(url, options)
-//     .then(res => res.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.error('error:' + err));}
+    let options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+    // body: JSON.stringify([{label:"" , done: ""}]),
+    };
 
-// const updateUser = () => {    
+    fetch(url, options)
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error('error:' + err));}
 
-//     const fetch = require('node-fetch');
+const updateUser = () => {    
 
-//     let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
+    const fetch = require('node-fetch');
+
+    let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
     
-//     let options = {
-//       method: 'PUT',
-//       headers: {'Content-Type': 'application/json'},
-//       body: '[{"label":"hacer la cama","done":false},{"label":"peinar al perro","done":false},{"label":"secar la ropa","done":false},{"label":"aprender python","done":false},{"label":"subir de nivel","done":false}]'
-//     };
+    let options = {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: '[{"label":"hacer la cama","done":false},{"label":"peinar al perro","done":false},{"label":"secar la ropa","done":false},{"label":"aprender python","done":false},{"label":"subir de nivel","done":false}]'
+    };
     
-//     fetch(url, options)
-//       .then(res => res.json())
-//       .then(json => console.log(json))
-//       .catch(err => console.error('error:' + err));}
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => console.log(json))
+      .catch(err => console.error('error:' + err));}
 
-// const deleteUser = () => {
+const deleteUser = () => {
 
-//       const fetch = require('node-fetch');
+      const fetch = require('node-fetch');
 
-//       let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
+      let url = 'http://assets.breatheco.de/apis/fake/todos/user/rozpi6';
       
-//       let options = {method: 'DELETE'};
+      let options = {method: 'DELETE'};
       
-//       fetch(url, options)
-//         .then(res => res.json())
-//         .then(json => console.log(json))
-//         .catch(err => console.error('error:' + err));}
+      fetch(url, options)
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(err => console.error('error:' + err));}
 
-// export default {
-//     createUser,
-//     deleteUser,
-//     updateUser,
-// };
+export default {
+    createUser,
+    deleteUser,
+    updateUser,
+};

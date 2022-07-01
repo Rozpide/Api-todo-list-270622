@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TareasPendientes from "./TareasPendientes.jsx";
+import {getTodos, putTodos} from "../app.js";
 
 const Home = () => {
 	const [tareas, cambiarTareas] = useState([]);
-	const agregarTarea = (nombreTarea) => {
-		const auxTarea = [...tareas, nombreTarea];
+
+
+	useEffect(() => {
+        getTodos()
+		.then(res => res.json())
+     	.then(data => cambiarTareas(data))
+    	.catch(err => console.error('error:' + err));
+
+    }, []);
+
+	const agregarTarea = (tarea) => {
+		putTodos(tarea)
+		.then(res => res.json())
+    	.catch(err => console.error('error:' + err));
+
+		const auxTarea = [...tareas, tarea];
 		cambiarTareas(auxTarea);
 	};
 
@@ -22,14 +37,14 @@ const Home = () => {
 					<i>LISTA DE TAREAS</i>
 				</b>
 			</h1>
-			<div class="hojaPrincipal">
+			<div className="hojaPrincipal">
 				<TareasPendientes agregarTarea={agregarTarea} />
 
 				{tareas.map((nombreTarea, index) => {
 					return (
 						<div key={index}>
 							<h4 id="hoja1">
-								{index + 1}.- {nombreTarea}
+								{index + 1}.- {nombreTarea.label}
 								<button
 									className="btn"
 									onClick={() =>

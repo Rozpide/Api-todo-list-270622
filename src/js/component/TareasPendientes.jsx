@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 
 const TareasPendientes = (props) => {
-	const [nombreTarea, cambiarNombreTarea] = useState("");
 
+	const [nuevaTarea, cambiarNuevaTarea]=useState({label:"",done:false});
+	
 	const change = (e) => {
-		const value = e.target.value;
-		cambiarNombreTarea(value);
+		cambiarNuevaTarea({label:e.target.value,done:false})
+		
 	};
 
 	const guardarNombre = () => {
-		if (nombreTarea && nombreTarea.length > 0) {
-			props.agregarTarea(nombreTarea);
+		if (nuevaTarea && nuevaTarea.label.length > 0) {
+			props.agregarTarea(nuevaTarea);
 		}
 	};
 

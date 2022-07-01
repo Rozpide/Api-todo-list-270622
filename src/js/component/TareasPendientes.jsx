@@ -19,7 +19,7 @@ const TareasPendientes = (props) => {
 		<>
 			<h3>Añadir tareas : </h3>
 			<input
-				class="pencil"
+				className="pencil"
 				type="text"
 				onChange={change}
 				placeholder="Añadir tareas?.."

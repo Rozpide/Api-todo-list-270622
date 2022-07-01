@@ -15,6 +15,13 @@ export const getTodos = () => {
       body:JSON.stringify(data)
   });
  }
+ export const deleteTodos = (data) =>{"https://assets.breatheco.de/apis/fake/todos/user/rozpi6",{
+      method:"DELETE",
+      headers:{"Content-Type": "application/json",},
+      body: JSON.stringify(data)
+ }
+  return fetch()
+ }
 
 // const createUser = () => {
 //     const fetch = require('node-fetch');

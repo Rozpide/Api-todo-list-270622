@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TareasPendientes from "./TareasPendientes.jsx";
-import {getTodos, putTodos} from "../app.js";
+import {getTodos, putTodos, deleteTodos} from "../app.js";
 
 const Home = () => {
 	const [tareas, cambiarTareas] = useState([]);
@@ -15,18 +15,21 @@ const Home = () => {
     }, []);
 
 	const agregarTarea = (tarea) => {
-		putTodos(tarea)
+		const auxTarea = [...tareas, tarea];
+		putTodos(auxTarea)
 		.then(res => res.json())
     	.catch(err => console.error('error:' + err));
-
-		const auxTarea = [...tareas, tarea];
 		cambiarTareas(auxTarea);
 	};
 
 	const eliminarTarea = (index) => {
+		console.log(index);
 		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
 			if (index !== auxIndex) return nombreTarea;
 		});
+		putTodos(auxTarea)
+		.then(res => res.json())
+    	.catch(err => console.error('error:' + err));
 		cambiarTareas(auxTarea);
 	};
 

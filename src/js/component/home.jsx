@@ -22,7 +22,7 @@ const Home = () => {
 		cambiarTareas(auxTarea);
 	};
 
-	const eliminarTarea = (index) => {
+	const deleteTodos = (index) => {
 		console.log(index);
 		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
 			if (index !== auxIndex) return nombreTarea;
@@ -61,7 +61,7 @@ const Home = () => {
 
 			<div className="hoja2">
 				<legend>
-					<h6>tareas pendientes</h6>
+					<h6>tareas pendientes: </h6>
 				</legend>
 			</div>
 			<div className="hoja3"></div>

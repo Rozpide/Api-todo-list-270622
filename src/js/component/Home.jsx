@@ -51,7 +51,7 @@ const Home = () => {
 								<button
 									className="btn"
 									onClick={() =>
-										eliminarTarea(index)
+										deleteTodos(index)
 									}></button>
 							</h4>
 						</div>
@@ -61,7 +61,7 @@ const Home = () => {
 
 			<div className="hoja2">
 				<legend>
-					<h6>tareas pendientes: </h6>
+					<h6>tareas pendientes</h6>
 				</legend>
 			</div>
 			<div className="hoja3"></div>
